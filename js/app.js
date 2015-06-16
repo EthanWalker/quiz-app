@@ -29,7 +29,6 @@ $(document).ready(function() {
     $('#answer4').text(questionArray[currentQuestion].answerArray[3].value)
   }
   function keepScore(currentQuestion, userAnswer){
-    console.log(currentQuestion);
     if(questionArray[currentQuestion].correctAnswer == userAnswer) {
       numberCorrect++;    
     }
@@ -50,13 +49,18 @@ $(document).ready(function() {
   showQuestion(currentQuestion); // Show First Question
   $('#submit-answer').click(function() {
     var userAnswer = $('input[name=answer]:checked').attr('id');
-    keepScore(currentQuestion, userAnswer);
-    currentQuestion++; // Increment to Next Question
-    if (currentQuestion < numberOfQuestions) {
-      showQuestion(currentQuestion);     
-    } 
-    else {
-      showFinalScreen(numberCorrect, numberOfQuestions);
+    if(userAnswer){
+      keepScore(currentQuestion, userAnswer);
+      currentQuestion++; // Increment to Next Question
+      if (currentQuestion < numberOfQuestions) {
+        showQuestion(currentQuestion);     
+      } 
+      else {
+        showFinalScreen(numberCorrect, numberOfQuestions);
+      }
+    }
+    else{
+      alert("You must select an answer!");
     }
   });
 });
