@@ -17,7 +17,7 @@ $(document).ready(function() {
   questionArray.push(new Question("What is Alabama's all time NCAAF record against South Carolina?", "10-4", "15-3-1", "12-2", "67-0", 0));
   questionArray.push(new Question("When was Alabama's last NCAAF National Championship victory?", "1929", "1946", "2012", "2015", 2));
   questionArray.push(new Question("Who is currently the head coach of the Alabama Crimson Tide?", "Steve Spurrier", "Nick Saban", "Don Cheadle", "Urban Myer", 1));
-  questionArray.push(new Question("Who is Alabama's only Heisman winner?", "Mark Ingram", "Bear Bryant", "Tim Tebow", "Amari Cooper", 1));
+  questionArray.push(new Question("Who is Alabama's only Heisman winner?", "Mark Ingram", "Bear Bryant", "Tim Tebow", "Amari Cooper", 0));
   /***************************************************************************/
   // Show question function
   function showQuestion(currentQuestion) {
@@ -30,9 +30,18 @@ $(document).ready(function() {
   }
   function keepScore(currentQuestion, userAnswer){
     if(questionArray[currentQuestion].correctAnswer = userAnswer) {
-      numberCorrect++;
-      console.log(numberCorrect);
+      numberCorrect++;      
     }
+  }
+  function showFinalScreen(numberCorrect, numberOfQuestions)
+  {
+    // Clear Page
+    $('header h1').empty();
+    $('header h3').empty();
+    $('.answer-container').empty();
+    // Show Score
+    $('header h1').text("Thanks for playing!");
+    $('header h3').text("You got " + numberCorrect + " out of " + numberOfQuestions + " correct!" );
   }
   /***************************************************************************/
   /* MAIN */
@@ -42,11 +51,10 @@ $(document).ready(function() {
     var userAnswer = $('input[name=answer]:checked').attr('id');
     if (currentQuestion < numberOfQuestions) {
       showQuestion(currentQuestion);
-      keepScore(currentQuestion, userAnswer);      
-      console.log(currentQuestion);
+      keepScore(currentQuestion, userAnswer);
       currentQuestion++; // Increment to Next Question
     } else {
-      //showFinalScreen();
+      showFinalScreen(numberCorrect, numberOfQuestions);
     }
   });
 });
