@@ -29,8 +29,9 @@ $(document).ready(function() {
     $('#answer4').text(questionArray[currentQuestion].answerArray[3].value)
   }
   function keepScore(currentQuestion, userAnswer){
-    if(questionArray[currentQuestion].correctAnswer = userAnswer) {
-      numberCorrect++;      
+    console.log(currentQuestion);
+    if(questionArray[currentQuestion].correctAnswer == userAnswer) {
+      numberCorrect++;    
     }
   }
   function showFinalScreen(numberCorrect, numberOfQuestions)
@@ -46,14 +47,14 @@ $(document).ready(function() {
   /***************************************************************************/
   /* MAIN */
   showQuestion(currentQuestion); // Show First Question
-  currentQuestion++; // Increment to Next Question
   $('#submit-answer').click(function() {
     var userAnswer = $('input[name=answer]:checked').attr('id');
+    keepScore(currentQuestion, userAnswer);
+    currentQuestion++; // Increment to Next Question
     if (currentQuestion < numberOfQuestions) {
-      showQuestion(currentQuestion);
-      keepScore(currentQuestion, userAnswer);
-      currentQuestion++; // Increment to Next Question
-    } else {
+      showQuestion(currentQuestion);     
+    } 
+    else {
       showFinalScreen(numberCorrect, numberOfQuestions);
     }
   });
