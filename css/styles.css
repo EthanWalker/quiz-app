@@ -9,12 +9,12 @@ h1
 header{
   text-align: center;
   color: white;
-  background-color: #283F51;
+  background-color: #91002A;
   padding: 1rem;
 }
 .btn-custom{
   color: white;
-  background-color: #283F51;
+  background-color: #91002A;
   margin-top: 1rem;
   height: 2rem;
   border-radius: 1rem;
@@ -27,4 +27,11 @@ header{
 .answer-container{
   width: 33%;
   margin: 5rem auto;
+}
+.logo{
+  background-image: url("../img/logo.png");
+  background-repeat: no-repeat;
+  width: 215px;
+  height: 215px;
+  margin: 1rem auto;
 }

@@ -43,6 +43,7 @@ $(document).ready(function() {
     // Show Score
     $('header h1').text("Thanks for playing!");
     $('header h3').text("You got " + numberCorrect + " out of " + numberOfQuestions + " correct!" );
+    $('.answer-container').addClass("logo");
   }
   /***************************************************************************/
   /* MAIN */
